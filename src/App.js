@@ -1,7 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import store from './store';
+import Routes from './routes';
 
 if (process.env.NODE_ENV === 'development') {
   import('./extra');
@@ -10,7 +12,9 @@ if (process.env.NODE_ENV === 'development') {
 const App = () => {
   return (
     <Provider store={store}>
-      <p>Marvel</p>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </Provider>
   );
 };
