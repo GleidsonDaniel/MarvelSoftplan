@@ -1,11 +1,18 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <p>Marvel Softplan</p>
-    </div>
-  );
+import store from './store';
+
+if (process.env.NODE_ENV === 'development') {
+  import('./extra');
 }
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <p>Marvel</p>
+    </Provider>
+  );
+};
 
 export default App;
