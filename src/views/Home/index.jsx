@@ -1,17 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
-const Home = () => {
+import Header from '../../components/Header';
+
+const Home = ({ history: { push } }) => {
   return (
     <React.Fragment>
-      <li>
-        <Link to="/edit">Hero Edit</Link>
-      </li>
-      <li>
-        <Link to="/details">Hero Details</Link>
-      </li>
+      <Header />
+      <Button onClick={() => push('/edit')}>
+        <text> Hero Edit</text>
+      </Button>
+      <Button onClick={() => push('/details')}>
+        <text> Hero Details</text>
+      </Button>
     </React.Fragment>
   );
 };
 
-export default Home;
+export default withRouter(Home);

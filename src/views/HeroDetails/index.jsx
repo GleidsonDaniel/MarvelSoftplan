@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
-const HeroDetails = () => {
+const HeroDetails = ({ history: { push } }) => {
   return (
     <React.Fragment>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/edit">Hero Edit</Link>
-      </li>
+      <Button onClick={() => push('/')}>
+        <text>Home</text>
+      </Button>
+      <Button onClick={() => push('/edit')}>
+        <text>Hero Edit</text>
+      </Button>
     </React.Fragment>
   );
 };
 
-export default HeroDetails;
+export default withRouter(HeroDetails);
