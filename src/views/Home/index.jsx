@@ -1,21 +1,45 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import InfiniteScroll from 'react-infinite-scroller';
 
-import Header from '../../components/Header';
+import { getAllHeroes } from '../../store/actions';
+import Card from '../../components/Card';
 
-const Home = ({ history: { push } }) => {
+const Home = ({ app: { editedHeroes, hasMore, results }, getAllHeroesAction }) => {
   return (
-    <React.Fragment>
-      <Header />
-      <Button onClick={() => push('/edit')}>
-        <text> Hero Edit</text>
-      </Button>
-      <Button onClick={() => push('/details')}>
-        <text> Hero Details</text>
-      </Button>
-    </React.Fragment>
+    <InfiniteScroll
+      pageStart={0}
+      loadMore={page => {
+        getAllHeroesAction({
+          page,
+          count: 20,
+        });
+      }}
+      hasMore={hasMore}
+      loader={<div />}
+    >
+      <div className="card-columns">
+        {results.map(hero => {
+          const editedHero = editedHeroes.find(i => i.id === hero.id);
+          if (editedHero) {
+            return <Card key={editedHero.id} hero={editedHero} />;
+          }
+          return <Card key={hero.id} hero={hero} />;
+        })}
+      </div>
+    </InfiniteScroll>
   );
 };
 
-export default withRouter(Home);
+const mapStateToProps = state => ({
+  app: state.app,
+});
+
+const mapDispachToProps = {
+  getAllHeroesAction: getAllHeroes,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispachToProps,
+)(Home);

@@ -17,6 +17,7 @@
   },
   "plugins": ["react", "jsx-a11y", "import", "react-hooks"],
   "rules": {
+    "quotes": [2, "single", { "avoidEscape": true }],
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "import/prefer-default-export": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],

@@ -1,0 +1,174 @@
+.menu_links {
+  cursor: pointer;
+}
+
+.header_top {
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.header_top_edit {
+  padding: 10px;
+  width: 100%;
+}
+
+.header_bottom {
+  width: 100%;
+  height: 35px;
+  flex-direction: row-reverse;
+  text-align: center;
+  margin: auto;
+}
+
+.text_header_bottom {
+  flex-direction: row-reverse;
+  text-align: center;
+  color: aliceblue;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  width: 100%;
+}
+
+.logo {
+  height: 45px;
+}
+
+.lds-dual-ring {
+  display: block;
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  margin-top: 50%;
+}
+
+.lds-dual-ring:after {
+  content: '';
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  border-color: #000 transparent #000 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.card-columns {
+  padding: 10px;
+}
+
+.hero_card {
+  width: 16rem;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.hero_card_title {
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+  .hero_description {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
+  }
+  .hero_description {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 5;
+  }
+}
+
+@media (min-width: 1400px) {
+  .card-columns {
+    column-count: 6;
+  }
+}
+
+@media (min-width: 1600px) {
+  .card-columns {
+    column-count: 7;
+  }
+}
+
+@media (min-width: 1800px) {
+  .card-columns {
+    column-count: 8;
+  }
+}
+
+.search_drop {
+  margin: 10px;
+}
+
+.hero_details {
+  padding: 10px;
+  padding-bottom: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.hero_details_image {
+  max-width: 100%;
+  max-height: 350px;
+}
+
+.hero_details_header {
+  text-align: center;
+}
+
+.form_error {
+  font-size: 14px;
+  color: red;
+}
+
+.hero_description {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+
+.hero_description_text {
+  padding: 5px;
+}
+
+.hero_caroussel {
+  max-width: 350px;
+  margin: auto;
+}
+
+.hero_caroussel_text {
+  text-shadow: #000;
+}
