@@ -3,7 +3,7 @@ import { shallow } from '../../Enzyme';
 
 import { Card } from '../../components';
 
-describe('Header component', () => {
+describe('Card component', () => {
   test('render Card component', () => {
     const props = {
       push: jest.fn(),

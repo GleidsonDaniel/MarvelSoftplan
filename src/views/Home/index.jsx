@@ -18,15 +18,19 @@ const Home = ({ app: { editedHeroes, hasMore, results }, getAllHeroesAction }) =
       hasMore={hasMore}
       loader={<div key={0} />}
     >
-      <div className="card-columns">
-        {results.map(hero => {
-          const editedHero = editedHeroes.find(i => i.id === hero.id);
-          if (editedHero) {
-            return <Card key={editedHero.id} hero={editedHero} />;
-          }
-          return <Card key={hero.id} hero={hero} />;
-        })}
-      </div>
+      {results.length ? (
+        <div className="card-columns">
+          {results.map(hero => {
+            const editedHero = editedHeroes && editedHeroes.find(i => i.id === hero.id);
+            if (editedHero) {
+              return <Card key={editedHero.id} hero={editedHero} />;
+            }
+            return <Card key={hero.id} hero={hero} />;
+          })}
+        </div>
+      ) : (
+        <div className="lds-dual-ring" />
+      )}
     </InfiniteScroll>
   );
 };

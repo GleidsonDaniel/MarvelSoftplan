@@ -75,7 +75,7 @@ export const setEditedHero = (newHero, oldHero) => async (dispatch, getState) =>
   if (!_.isEqual(newHero, oldHero)) {
     if (app.editedHeroes) {
       const allHeroes = app.editedHeroes.filter(i => {
-        if (i && i.id != newHero.id) return i;
+        if (i && i.id !== newHero.id) return i;
       });
       await dispatch([
         { type: types.SET_EDITED_HERO, payload: [...allHeroes, { ...newHero }] },
@@ -89,7 +89,13 @@ export const setEditedHero = (newHero, oldHero) => async (dispatch, getState) =>
         JSON.stringify([...allHeroes, { ...newHero }]),
       );
     } else {
-      await dispatch({ type: types.SET_EDITED_HERO, payload: newHero });
+      await dispatch([
+        { type: types.SET_EDITED_HERO, payload: [newHero] },
+        {
+          type: types.SELECT_HERO,
+          payload: newHero,
+        },
+      ]);
       await localStorage.setItem('@marvelApp/editedHeroes', JSON.stringify([newHero]));
     }
   }

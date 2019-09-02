@@ -9,7 +9,7 @@ import { RenderSeries } from '../../components';
 const mockStore = configureMockStore();
 const store = mockStore({});
 
-describe('Header component', () => {
+describe('RenderSeries component', () => {
   test('render RenderSeries component', () => {
     const props = {
       push: jest.fn(),

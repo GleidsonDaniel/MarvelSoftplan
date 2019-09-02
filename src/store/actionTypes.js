@@ -1,4 +1,4 @@
-// home
+// app actions
 
 export const SET_HEROES = 'SET_HEROES';
 export const ERROR_SET_HEROES = 'ERROR_SET_HEROES';
@@ -10,4 +10,5 @@ export const SET_HAS_MORE = 'SET_HAS_MORE';
 export const SET_SEARCH_LOADING = 'SET_SEARCH_LOADING';
 export const SET_SEARCH_HEROES = 'SET_SEARCH_HEROES';
 export const SET_HERO_SEARCH = 'SET_HERO_SEARCH';
+
 // end

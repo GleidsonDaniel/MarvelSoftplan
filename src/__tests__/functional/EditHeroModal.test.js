@@ -3,7 +3,7 @@ import { shallow } from '../../Enzyme';
 
 import { EditHeroModal } from '../../components';
 
-describe('Header component', () => {
+describe('EditHeroModal component', () => {
   test('render EditHeroModalComponent component', () => {
     const props = {
       history: { push: {} },
