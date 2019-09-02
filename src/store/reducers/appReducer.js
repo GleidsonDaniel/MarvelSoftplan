@@ -10,6 +10,8 @@ const initial = {
   selectedHero: JSON.parse(localStorage.getItem('@marvelApp/selectedHero')),
   heroSeries: JSON.parse(localStorage.getItem('@marvelApp/selectHeroSeries')),
   editedHeroes: JSON.parse(localStorage.getItem('@marvelApp/editedHeroes')),
+  searchHeroes: [],
+  heroSearch: '',
 };
 
 export default (state = initial, action) => {
@@ -33,6 +35,10 @@ export default (state = initial, action) => {
       return { ...state, editedHeroes: payload };
     case types.SET_HAS_MORE:
       return { ...state, hasMore: payload };
+    case types.SET_SEARCH_HEROES:
+      return { ...state, searchHeroes: payload };
+    case types.SET_HERO_SEARCH:
+      return { ...state, heroSearch: payload };
     default:
       return state;
   }

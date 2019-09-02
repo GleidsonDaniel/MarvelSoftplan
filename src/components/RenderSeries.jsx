@@ -28,9 +28,6 @@ const RenderSeries = ({ series, getHeroSeriesAction, app }) => {
                   className="d-block w-100"
                   src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
                 />
-                {/* <Carousel.Caption>
-                  <h3 className="hero_caroussel_text">{serie.title}</h3>
-                </Carousel.Caption> */}
               </Carousel.Item>
             );
           })}

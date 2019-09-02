@@ -1,6 +1,5 @@
 import md5 from 'md5';
 import axios from 'axios';
-import { publicKey, privateKey } from '../config';
 
 const baseUrl = `${window.location.protocol || 'http'}//gateway.marvel.com`;
 
@@ -9,9 +8,11 @@ const getCharacters = (origOptions = {}, offset) => {
   const options = { ...defaultOptions, ...origOptions };
   const URI = '/v1/public/characters';
   const timeStamp = Math.round(+new Date() / 1000);
-  const hash = md5(timeStamp + privateKey + publicKey);
+  const hash = md5(
+    timeStamp + process.env.REACT_APP_MARVEL_PRIVATE_KEY + process.env.REACT_APP_MARVEL_PUBLIC_KEY,
+  );
 
-  let params = `?apikey=${publicKey}&ts=${timeStamp}&hash=${hash}&limit=${options.count}&offset=${offset}`;
+  let params = `?apikey=${process.env.REACT_APP_MARVEL_PUBLIC_KEY}&ts=${timeStamp}&hash=${hash}&limit=${options.count}&offset=${offset}`;
 
   if (options.name) {
     params = `${params}&name=${options.name}`;
@@ -25,8 +26,10 @@ const getCharacters = (origOptions = {}, offset) => {
 
 const getSeries = serieUrl => {
   const timeStamp = Math.round(+new Date() / 1000);
-  const hash = md5(timeStamp + privateKey + publicKey);
-  const url = `${serieUrl}?apikey=${publicKey}&ts=${timeStamp}&hash=${hash}`;
+  const hash = md5(
+    timeStamp + process.env.REACT_APP_MARVEL_PRIVATE_KEY + process.env.REACT_APP_MARVEL_PUBLIC_KEY,
+  );
+  const url = `${serieUrl}?apikey=${process.env.REACT_APP_MARVEL_PUBLIC_KEY}&ts=${timeStamp}&hash=${hash}`;
   return axios.get(url);
 };
 

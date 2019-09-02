@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import { getAllHeroes } from '../../store/actions';
-import Card from '../../components/Card';
+import { Card } from '../../components';
 
 const Home = ({ app: { editedHeroes, hasMore, results }, getAllHeroesAction }) => {
   return (
@@ -16,7 +16,7 @@ const Home = ({ app: { editedHeroes, hasMore, results }, getAllHeroesAction }) =
         });
       }}
       hasMore={hasMore}
-      loader={<div />}
+      loader={<div key={0} />}
     >
       <div className="card-columns">
         {results.map(hero => {

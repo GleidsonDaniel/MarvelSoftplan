@@ -16,14 +16,30 @@ export const getAllHeroes = param => async (dispatch, getState) => {
       { type: types.SET_HEROES, payload: data },
       { type: types.SET_HAS_MORE, payload: total >= count },
     ]);
-    await console.tron.log(param, data);
   } catch (error) {
     dispatch([{ type: types.ERROR_SET_HEROES }, { type: types.SET_HAS_MORE, payload: false }]);
   }
 };
 
-export const getUniqueHero = () => async dispatch => {
-  await dispatch({ type: types.SET_UNIQUE_HERO, payload: [] });
+export const getFilterHeroes = hero => async dispatch => {
+  await dispatch({ type: types.SET_SEARCH_LOADING, payload: true });
+  try {
+    const {
+      data: {
+        data: { results },
+      },
+    } = await getCharacters({ nameStartsWith: hero });
+    await dispatch([
+      { type: types.SET_SEARCH_HEROES, payload: results },
+      { type: types.SET_SEARCH_LOADING, payload: false },
+    ]);
+  } catch (error) {
+    // dispatch([{ type: types.ERROR_SET_HEROES }, { type: types.SET_HAS_MORE, payload: false }]);
+  }
+};
+
+export const setHeroSearch = name => dispatch => {
+  dispatch([{ type: types.SET_HERO_SEARCH, payload: { name, id: '1' } }, getFilterHeroes(name)]);
 };
 
 export const selectHero = (hero, push) => async dispatch => {

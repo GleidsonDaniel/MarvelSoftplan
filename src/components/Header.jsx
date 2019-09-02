@@ -3,11 +3,17 @@ import { Navbar, Form } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import Select from 'react-select';
 import { FaSearch } from 'react-icons/fa';
+import { connect } from 'react-redux';
 
 import { logo } from '../assets';
-import { results } from '../mock';
+import { setHeroSearch, selectHero } from '../store/actions';
 
-const Header = ({ history: { push } }) => {
+const Header = ({
+  history: { push },
+  app: { searchHeroes, heroSearch },
+  setHeroSearchAction,
+  selectHeroAction,
+}) => {
   const renderIcon = () => <FaSearch className="search_drop" />;
   return (
     <React.Fragment>
@@ -20,10 +26,19 @@ const Header = ({ history: { push } }) => {
           <Form className="header_top" inline>
             <div style={{ width: 200 }}>
               <Select
+                onInputChange={i => {
+                  i && setHeroSearchAction(i);
+                }}
+                onChange={i => {
+                  selectHeroAction(i, push);
+                  setHeroSearchAction('');
+                }}
+                onFocus={() => setHeroSearchAction('')}
                 getOptionLabel={option => option.name}
                 getOptionValue={option => option.id}
+                value={heroSearch}
                 components={{ DropdownIndicator: renderIcon }}
-                options={results}
+                options={searchHeroes}
                 placeholder="Digite o nome"
                 noOptionsMessage={() => 'Heroi não encontrado'}
               />
@@ -38,4 +53,18 @@ const Header = ({ history: { push } }) => {
   );
 };
 
-export default withRouter(Header);
+const mapDispatchToProps = {
+  setHeroSearchAction: setHeroSearch,
+  selectHeroAction: selectHero,
+};
+
+const mapStateToProps = state => ({
+  app: state.app,
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(Header),
+);

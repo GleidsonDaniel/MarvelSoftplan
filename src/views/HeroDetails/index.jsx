@@ -5,8 +5,7 @@ import { Image, Button, Form } from 'react-bootstrap';
 
 import { setEditedHero } from '../../store/actions';
 
-import EditHeroModal from '../../components/EditHeroModal';
-import RenderSeries from '../../components/RenderSeries';
+import { EditHeroModal, RenderSeries } from '../../components';
 
 const HeroDetails = ({ app: { selectedHero }, setEditedHeroAction }) => {
   const [modalShow, setModalShow] = useState(false);
