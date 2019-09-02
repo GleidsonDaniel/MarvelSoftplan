@@ -4,16 +4,14 @@ import { shallow } from '../../Enzyme';
 import { EditHeroModal } from '../../components';
 
 describe('Header component', () => {
-  test('deve incluir o componente Header', () => {
+  test('render EditHeroModalComponent component', () => {
     const props = {
-      push: jest.fn(),
-      searchHeroes: {},
-      heroSearch: {},
-      setHeroSearchAction: jest.fn(),
+      history: { push: {} },
+      hero: {},
       selectHeroAction: jest.fn(),
     };
     const wrapper = shallow(<EditHeroModal {...props} />);
     expect(wrapper.exists()).toBeTruthy();
-    expect(wrapper.find('Header').length);
+    // expect(wrapper.find('Header').length);
   });
 });

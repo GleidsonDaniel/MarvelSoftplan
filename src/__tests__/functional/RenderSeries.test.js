@@ -10,7 +10,7 @@ const mockStore = configureMockStore();
 const store = mockStore({});
 
 describe('Header component', () => {
-  test('deve incluir o componente Header', () => {
+  test('render RenderSeries component', () => {
     const props = {
       push: jest.fn(),
       searchHeroes: {},
@@ -24,6 +24,6 @@ describe('Header component', () => {
       </Provider>,
     );
     expect(wrapper.exists()).toBeTruthy();
-    expect(wrapper.find('Header').length);
+    // expect(wrapper.find('Header').length);
   });
 });

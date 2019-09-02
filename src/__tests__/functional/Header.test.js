@@ -4,7 +4,7 @@ import { shallow } from '../../Enzyme';
 import Header from '../../components/Header';
 
 describe('Header component', () => {
-  test('deve incluir o componente Header', () => {
+  test('render Header component', () => {
     const props = {
       push: jest.fn(),
       searchHeroes: {},
@@ -14,6 +14,6 @@ describe('Header component', () => {
     };
     const wrapper = shallow(<Header {...props} />);
     expect(wrapper.exists()).toBeTruthy();
-    expect(wrapper.find('Header').length);
+    // expect(wrapper.find('Header').length);
   });
 });
